@@ -2,26 +2,21 @@ const Stack = require("./stack.js");
 
 const isValidParenthesis = (bracketString) => {
     let bracketStack = new Stack();
-    let bracketArray = bracketString.split("");
-    console.log("array", bracketArray);
-    bracketArray.forEach((character) => {
-        if (bracketStack.first) {
-            if (character === ")" && bracketStack.first.value === "(") {
-                bracketStack.pop();
-            } else if (character === "}" && bracketStack.first.value === "{") {
-                bracketStack.pop();
-            } else if (character === "]" && bracketStack.first.value === "[") {
-                bracketStack.pop();
-            } else {
-                bracketStack.push(character);
-            }
+    let bracketMap = {
+        "(": ")",
+        "[": "]",
+        "{": "}",
+    };
+    for (const character of bracketString) {
+        if (bracketMap[character]) {
+            bracketStack.push(bracketMap[character]);
         } else {
-            bracketStack.push(character);
+            if (character !== bracketStack.pop().value) {
+                return false;
+            }
         }
-    });
-    console.log(bracketStack);
-    console.log("stack length:", bracketStack.length);
-    return bracketStack.length === 0 ? true : false;
+    }
+    return bracketStack.length === 0;
 };
 
 const result1 = isValidParenthesis("{])}");
