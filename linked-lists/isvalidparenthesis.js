@@ -14,8 +14,8 @@ const isValidParenthesis = (parenthesisString) => {
             ) {
                 parenthesisStack.pop();
             } else if (
-                character === "[" &&
-                parenthesisStack.first.value === "]"
+                character === "]" &&
+                parenthesisStack.first.value === "["
             ) {
                 parenthesisStack.pop();
             } else {
@@ -26,9 +26,9 @@ const isValidParenthesis = (parenthesisString) => {
         }
     });
     console.log(parenthesisStack);
-    console.log("stack length", parenthesisStack.length);
+    console.log("stack length:", parenthesisStack.length);
     return parenthesisStack.length === 0 ? true : false;
 };
 
-const result = isValidParenthesis("");
+const result = isValidParenthesis("{([])}");
 console.log(result);
