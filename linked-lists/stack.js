@@ -51,6 +51,6 @@ class Stack {
 // myStack.push(1);
 // myStack.push(2);
 
-// console.log(myStack.min());
+// console.log(myStack.pop());
 
 module.exports = Stack;
