@@ -1,34 +1,30 @@
 const Stack = require("./stack.js");
 
-const isValidParenthesis = (parenthesisString) => {
-    let parenthesisStack = new Stack();
-    let parenthesisArray = parenthesisString.split("");
-    console.log("array", parenthesisArray);
-    parenthesisArray.forEach((character) => {
-        if (parenthesisStack.first) {
-            if (character === ")" && parenthesisStack.first.value === "(") {
-                parenthesisStack.pop();
-            } else if (
-                character === "}" &&
-                parenthesisStack.first.value === "{"
-            ) {
-                parenthesisStack.pop();
-            } else if (
-                character === "]" &&
-                parenthesisStack.first.value === "["
-            ) {
-                parenthesisStack.pop();
+const isValidParenthesis = (bracketString) => {
+    let bracketStack = new Stack();
+    let bracketArray = bracketString.split("");
+    console.log("array", bracketArray);
+    bracketArray.forEach((character) => {
+        if (bracketStack.first) {
+            if (character === ")" && bracketStack.first.value === "(") {
+                bracketStack.pop();
+            } else if (character === "}" && bracketStack.first.value === "{") {
+                bracketStack.pop();
+            } else if (character === "]" && bracketStack.first.value === "[") {
+                bracketStack.pop();
             } else {
-                parenthesisStack.push(character);
+                bracketStack.push(character);
             }
         } else {
-            parenthesisStack.push(character);
+            bracketStack.push(character);
         }
     });
-    console.log(parenthesisStack);
-    console.log("stack length:", parenthesisStack.length);
-    return parenthesisStack.length === 0 ? true : false;
+    console.log(bracketStack);
+    console.log("stack length:", bracketStack.length);
+    return bracketStack.length === 0 ? true : false;
 };
 
-const result = isValidParenthesis("{([])}");
-console.log(result);
+const result1 = isValidParenthesis("{])}");
+console.log(result1); // false
+const result2 = isValidParenthesis("{([])}");
+console.log(result2); // true
