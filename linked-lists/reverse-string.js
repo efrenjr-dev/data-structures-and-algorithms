@@ -8,7 +8,7 @@ const reverseString = (stringValue) => {
         stack.push(character);
     }
     while (stack.length > 0) {
-        reversedString = reversedString + stack.pop().value;
+        reversedString += stack.pop().value;
     }
     return reversedString;
 };
