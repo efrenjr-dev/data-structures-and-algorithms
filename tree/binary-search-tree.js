@@ -54,6 +54,49 @@ class BST {
         }
         return false;
     }
+    breadthFirstSearch() {
+        let current = this.root;
+        let queue = [];
+        let data = [];
+
+        queue.push(current);
+
+        while (queue.length) {
+            current = queue.shift();
+            data.push(current.value);
+
+            if (current.left) queue.push(current.left);
+            if (current.right) queue.push(current.right);
+        }
+        return data;
+    }
+    depthFirstSearchPreOrder(node = this.root, data = []) {
+        if (node === null) return data;
+        data.push(node.value);
+
+        if (node.left) this.depthFirstSearchPreOrder(node.left, data);
+        if (node.right) this.depthFirstSearchPreOrder(node.right, data);
+        return data;
+    }
+    depthFirstSearchPostOrder(node = this.root, data = []) {
+        if (node === null) return data;
+
+        if (node.left) this.depthFirstSearchPostOrder(node.left, data);
+        if (node.right) this.depthFirstSearchPostOrder(node.right, data);
+
+        data.push(node.value);
+
+        return data;
+    }
+    depthFirstSearchInOrder(node = this.root, data = []) {
+        if (node === null) return data;
+
+        if (node.left) this.depthFirstSearchInOrder(node.left, data);
+        data.push(node.value);
+        if (node.right) this.depthFirstSearchInOrder(node.right, data);
+
+        return data;
+    }
 }
 
 const tree = new BST();
@@ -63,5 +106,9 @@ tree.insert(2);
 tree.insert(9);
 tree.insert(7);
 console.log(tree);
-const result = tree.includes(9);
-console.log(result);
+const result1 = tree.depthFirstSearchPreOrder();
+const result2 = tree.depthFirstSearchPostOrder();
+const result3 = tree.depthFirstSearchInOrder();
+console.log("DFS PreOrder", result1);
+console.log("DFS PostOrder", result2);
+console.log("DFS InOrder", result3);
