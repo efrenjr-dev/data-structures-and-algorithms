@@ -37,17 +37,22 @@ class BST {
         }
     }
     includes(value) {
+        if (!this.root) {
+            return false;
+        }
+
         let temp = this.root;
 
         while (temp) {
             if (temp.value === value) {
-                return temp;
-            }
-            if (value < temp.value) {
+                return true;
+            } else if (value < temp.value) {
                 temp = temp.left;
-            } else temp = temp.right;
+            } else if (value > temp.value) {
+                temp = temp.right;
+            }
         }
-        return undefined;
+        return false;
     }
 }
 
