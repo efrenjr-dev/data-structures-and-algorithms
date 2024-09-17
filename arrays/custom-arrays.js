@@ -40,11 +40,11 @@ class MyArray {
     }
 
     deleteByIndex(index) {
-        const deletedItem = this.data[this.length - 1];
         if (index >= this.length || index < 0) {
             return "Index does not exist in the array";
         }
 
+        const deletedItem = this.data[index];
         for (let i = index; i < this.length - 1; i++) {
             this.data[i] = this.data[i + 1];
         }
@@ -61,5 +61,5 @@ myNewArray.push("Two");
 myNewArray.push("Three");
 
 console.log(myNewArray);
-console.log(myNewArray.deleteByIndex(0));
+console.log(myNewArray.deleteByIndex(2));
 console.log(myNewArray);
