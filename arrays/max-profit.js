@@ -5,7 +5,6 @@
 const stockPrices = [7, 4, 2, 5, 7, 8, 7, 49, 4, 2, 5, 2, 1];
 
 const maxProfit = (pricesArray) => {
-    let expensivePrice = 0;
     let cheapPrice = stockPrices[0];
     let maxProfit = 0;
     pricesArray.forEach((price) => {

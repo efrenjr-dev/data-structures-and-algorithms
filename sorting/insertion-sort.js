@@ -5,6 +5,8 @@ const insertionSort = (array) => {
         while (j >= 0 && current < array[j]) {
             array[j + 1] = array[j];
             j--;
+
+            console.log(array);
         }
         array[j + 1] = current;
     }

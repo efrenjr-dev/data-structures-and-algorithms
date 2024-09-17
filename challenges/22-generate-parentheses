@@ -1,0 +1,22 @@
+const generateParenthesis = (n) => {
+    let validParenthesis = [];
+
+    const dfs = (openP, closedP, stringP) => {
+        if (openP === closedP && openP + closedP === n * 2) {
+            validParenthesis.push(stringP);
+            return;
+        }
+        if (openP < n) {
+            dfs(openP + 1, closedP, stringP + "(");
+        }
+        if (closedP < openP) {
+            dfs(openP, closedP + 1, stringP + ")");
+        }
+    };
+
+    dfs(0, 0, "");
+    return validParenthesis;
+};
+
+const numPairs = 4;
+console.log(generateParenthesis(numPairs));
