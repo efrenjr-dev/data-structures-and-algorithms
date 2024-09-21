@@ -1,0 +1,18 @@
+var removeDuplicates = function (nums) {
+    const numsMap = {};
+    let k = 0;
+    nums.forEach((num) => {
+        if (numsMap[num]) {
+            numsMap[num]++;
+        } else {
+            numsMap[num] = 1;
+            k++;
+        }
+    });
+    nums = Object.keys(numsMap);
+    console.log(nums);
+    return k;
+};
+
+const array = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+console.log(removeDuplicates(array));

@@ -1,0 +1,26 @@
+var searchRange = function (nums, target) {
+    let low = 0;
+    let high = nums.length;
+    let mid = null;
+    while (low < high) {
+        mid = low + Math.floor((high - low) / 2);
+        if (target > nums[mid]) {
+            low = mid + 1;
+        } else {
+            high = mid;
+        }
+    }
+    if (target === nums[low]) {
+        let counter = 0;
+        while (target === nums[low + counter + 1]) {
+            counter++;
+        }
+        return [low, low + counter];
+    } else {
+        return [-1, -1];
+    }
+};
+
+const array = [5, 7, 7, 8, 8, 10];
+const goal = 8;
+console.log(searchRange(array, goal));

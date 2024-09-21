@@ -21,11 +21,11 @@ const merge = (left, right) => {
 const mergeSort = (array) => {
     if (array.length <= 1) return array;
     const middle = Math.floor(array.length / 2);
-    const left = array.slice(0, middle);
-    const right = array.slice(middle);
-    console.log("left", left);
-    console.log("right", right);
-    return merge(mergeSort(left), mergeSort(right));
+    const left = mergeSort(array.slice(0, middle));
+    const right = mergeSort(array.slice(middle));
+    // console.log("left", left);
+    // console.log("right", right);
+    return merge(left, right);
 };
 
 // const myArray1 = [4, 21, 36, 80, 92];

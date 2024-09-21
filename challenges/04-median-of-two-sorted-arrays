@@ -1,0 +1,28 @@
+var findMedianSortedArrays = function (nums1, nums2) {
+    let array = [];
+    let median = null;
+
+    while (nums1[0] && nums2[0]) {
+        if (nums1[0] < nums2[0]) {
+            array.push(nums1.shift());
+        } else {
+            array.push(nums2.shift());
+        }
+    }
+    if (nums1) array.push(...nums1);
+    if (nums2) array.push(...nums2);
+
+    let mid = Math.floor(array.length / 2);
+
+    if (array.length % 2 === 0) {
+        median = (array[mid] + array[mid + 1]) / 2;
+    } else {
+        median = array[mid];
+    }
+    return median;
+};
+
+const input1 = [1, 2];
+const input2 = [3, 4];
+const output = findMedianSortedArrays(input1, input2);
+console.log(output);

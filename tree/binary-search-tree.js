@@ -106,6 +106,8 @@ tree.insert(2);
 tree.insert(9);
 tree.insert(7);
 console.log(tree);
+// const result = tree.breadthFirstSearch();
+// console.log(result);
 const result1 = tree.depthFirstSearchPreOrder();
 const result2 = tree.depthFirstSearchPostOrder();
 const result3 = tree.depthFirstSearchInOrder();

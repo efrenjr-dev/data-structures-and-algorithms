@@ -1,0 +1,22 @@
+var myAtoi = function (s) {
+    let outputString = "";
+    let mathSign = 1;
+    let end = false;
+    let i = 0;
+    while (i < s.length && !end) {
+        if (s[i] === "-") {
+            if (outputString) end = true;
+            else mathSign = -1;
+        } else if (!isNaN(s[i]) && s[i] !== " ") {
+            outputString = outputString.concat(s[i]);
+        } else if (isNaN(s[i]) && s[i] !== " ") {
+            end = true;
+        }
+        i++;
+    }
+    return parseInt(outputString) * mathSign;
+};
+
+const input = "words and 987";
+const output = myAtoi(input);
+console.log(output);
